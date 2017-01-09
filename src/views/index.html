@@ -1,0 +1,244 @@
+<DOCTYPE !html>
+<head>
+	<link rel="stylesheet" href="/assets/forum-0304390e.css">
+</head>
+<body>
+<div id="app" class="App">
+
+  <div id="app-navigation" class="App-navigation"></div>
+
+  <div id="drawer" class="App-drawer">
+
+    <header id="header" class="App-header">
+      <div id="header-navigation" class="Header-navigation"></div>
+      <div class="container">
+        <h1 class="Header-title">
+          <a href="{{ array_get($forum, 'attributes.baseUrl') }}" id="home-link">
+              Froum
+          </a>
+        </h1>
+        <div id="header-primary" class="Header-primary"></div>
+        <div id="header-secondary" class="Header-secondary"></div>
+      </div>
+    </header>
+
+  </div>
+
+  <main class="App-content">
+    <div id="content"></div>
+
+
+      <div class="IndexPage">
+				<header class="Hero WelcomeHero">
+					<div class="container">
+						<button class="Hero-close Button Button--icon Button--link hasIcon" type="button">
+							<i class="icon fa fa-fw fa-times Button-icon"></i>
+						</button>
+						<div class="containerNarrow">
+							<h2 class="Hero-title">Welcome to the Flarum Community</h2>
+							<div class="Hero-subtitle">Get support using and extending Flarum, the next-generation forum software that makes online discussion fun. New here? Please <a href="http://flarum.org/docs/faq">read the FAQ</a> before posting.</div>
+					  </div>
+					</div>
+				</header>			
+				<div class="container">
+					<nav class="IndexPage-nav sideNav">
+						<ul>
+              <li class="item-newDiscussion App-primaryControl">
+								<button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" title="Start a Discussion">
+									<i class="icon fa fa-fw fa-edit Button-icon"></i>
+									<span class="Button-label">Start a Discussion</span>
+								</button>
+							</li>		
+							<li class="item-nav">
+								<div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select Dropdown--select itemCount18">
+									<button class="Dropdown-toggle Button" data-toggle="dropdown"><span class="Button-label">Dev</span><i class="icon fa fa-fw fa-sort Button-caret"></i></button>
+											<ul class="Dropdown-menu dropdown-menu ">
+												<li class="item-allDiscussions active">
+													<a href="/" active="true" class=" hasIcon" type="button" title="All Discussions">
+													<i class="icon fa fa-fw fa-comments-o Button-icon"></i>
+													<span class="Button-label">All Discussions</span>
+													</a>
+												</li>
+												<li class="item-tags">
+													<a href="/tags" active="false" class=" hasIcon" type="button" title="Tags">
+													<i class="icon fa fa-fw fa-th-large Button-icon"></i>
+													<span class="Button-label">Tags</span>
+													</a>
+												</li>
+												<li class="Dropdown-separator"></li>
+												<li class="item-tag20">
+													<a class="TagLinkButton hasIcon " href="/t/post-tests-here" style="" title="Test out Flarum in this tag. Discussions in this tag will be deleted every so often.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(181, 158, 140);"></span>
+													Post tests here
+													</a>
+												</li>
+												<li class="item-tag24">
+													<a class="TagLinkButton hasIcon " href="/t/support" style="" title="Get help setting up, using, and customising Flarum.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(75, 147, 209);"></span>
+													Support</a>
+												</li>
+												<li class="item-tag69">
+													<a class="TagLinkButton hasIcon " href="/t/feedback" style="" title="For discussing Flarum core features and design. For issues use Support.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(147, 84, 202);"></span>Feedback
+													</a>
+												</li>
+												<li class="item-tag48">
+													<a class="TagLinkButton hasIcon " href="/t/extensions" style="" title="Announce your extensions and provide help to users in this area. For requests/ideas, post in Feedback. For help building extensions, post in Dev &gt; Extensibility.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(72, 191, 131);"></span>Extensions
+													</a>
+												</li>
+												<li class="item-tag4">
+													<a class="TagLinkButton hasIcon " href="/t/dev" style="" title="For developers. Get help hacking core, building extensions, themes, and translations.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(65, 65, 65);"></span>Dev</a>
+												</li>
+												<li class="item-tag16">
+													<a class="TagLinkButton hasIcon " href="/t/meta" style="" title="Discussion about this community: its organisation and how we can improve it.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(239, 86, 79);"></span>Meta</a>
+												</li>
+												<li class="item-tag52">
+													<a class="TagLinkButton hasIcon " href="/t/resources" style="" title="Share Flarum-related resources and services here: hosting, jobs, etc.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(98, 108, 120);"></span>Resources
+													</a>
+												</li>
+												<li class="item-tag1">
+													<a class="TagLinkButton hasIcon " href="/t/off-topic" style="" title="Off-topic discussions that don't fit into any other categories.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(214, 139, 79);"></span>Off-topic
+													</a>
+												</li>
+												<li class="item-tag60">
+													<a class="TagLinkButton hasIcon " href="/t/solved" style="" title="Solved issues.">
+													<span class="icon TagIcon Button-icon" style="background-color: rgb(109, 187, 62);"></span>Solved
+													</a>
+												</li>
+												<li class="item-tag19">
+													<a class="TagLinkButton hasIcon " href="/t/performance" style="" title="">
+													<span class="icon TagIcon Button-icon"></span>Performance
+													</a>
+													</li>
+													<li class="item-tag70">
+														<a class="TagLinkButton hasIcon " href="/t/duplicate" style="" title="">
+														<span class="icon TagIcon Button-icon"></span>Duplicate
+														</a>	
+													</li>
+													<li class="item-moreTags">
+														<a href="/tags" active="false" class="" type="button" title="More...">
+														<span class="Button-label">More...</span>
+														</a>
+													</li>
+											</ul>							
+								</div>
+							</li>					
+						</ul>
+					</nav>
+
+					<div class="IndexPage-results sideNavOffset">
+
+						<div class="IndexPage-toolbar">
+							<ul class="IndexPage-toolbar-view">
+								<li class="item-sort">
+									<span class="Select">
+										<select class="Select-input FormControl">
+											<option value="latest">Latest</option>
+											<option value="top">Top</option>
+											<option value="newest">Newest</option>
+											<option value="oldest">Oldest</option>
+										</select>
+										<i class="icon fa fa-fw fa-sort Select-caret"></i>
+										</span>
+								</li>
+							</ul>
+							<ul class="IndexPage-toolbar-action"></ul>
+					  </div>	
+
+						<div class="DiscussionList">
+							<button class="Button Button--block DiscussionList-update" type="button" title="Show 1 updated discussion"><span class="Button-label">Show 1 updated discussion</span></button>
+							<ul>
+									<li data-id="4010">
+										<div class="DiscussionListItem">
+											<div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+												<button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown" aria-expanded="false">
+													<i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+													<span class="Button-label"></span>
+													<i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+												</button>
+												<ul class="Dropdown-menu dropdown-menu">
+													<li class="item-subscription">
+														<button class=" hasIcon" type="button" title="Follow">
+															<i class="icon fa fa-fw fa-star Button-icon"></i>
+															<span class="Button-label">Follow</span>
+														</button>
+													</li>
+												</ul>
+										</div>
+										<a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+											<i class="icon fa fa-fw fa-check "></i>
+										</a>
+										<div class="DiscussionListItem-content Slidable-content unread">
+											<a href="/u/Toby" class="DiscussionListItem-author" title="" data-original-title="Toby started Oct '16">
+											<img class="Avatar " src="https://discuss.flarum.org/assets/avatars/yzejjqriqrwntpab.jpg"></a>
+											<ul class="DiscussionListItem-badges badges">
+												<li class="item-sticky">
+													<span class="Badge Badge--sticky " title="" data-original-title="Sticky">
+														<i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i>
+													</span>
+												</li>
+											</ul>
+											<a href="/d/4010-flarum-v0-1-0-beta-6-released" class="DiscussionListItem-main">
+													<h3 class="DiscussionListItem-title">Flarum v0.1.0-beta.6 released</h3>
+													<ul class="DiscussionListItem-info">
+														<li class="item-tags">
+															<span class="TagsLabel ">
+																<span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);">
+																	<span class="TagLabel-text">Meta</span>
+																</span>
+																<span class="TagLabel ">
+																	<span class="TagLabel-text">Blog</span>
+																	</span>
+																</span>
+														</li>
+														<li class="item-terminalPost">
+															<span>
+																<i class="icon fa fa-fw fa-reply "></i> 
+																<span class="username">Liberty</span> replied 
+																<time pubdate="true" datetime="2017-01-08T07:23:14+08:00" title="Sunday, January 8, 2017 7:23 AM" data-humantime="true">a day ago</time>
+															</span>
+														</li>
+														<li class="item-excerpt">
+															<span>At long last! We are proud to announce the release of Flarum v0.1.0-beta.6 today. This is another release on the road to stability, containing a healthy batch of improvements and bug fixes. New Admin ...</span>
+														</li>
+												</ul>
+										 </a>
+										 <span class="DiscussionListItem-count" title="Mark as Read">158</span>
+								  </div>
+								</div>
+							 </li>	<!--end of one post -->		
+
+
+
+						 </ul>
+					 </div>
+					</div>
+
+				</div>	
+			</div>
+
+
+
+
+
+
+    <div class="App-composer">
+      <div class="container">
+        <div id="composer"></div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+
+
+<script src="/assets/forum-70f79e94.js"></script>
+<script src="/assets/forum-en-df77f08d.js"></script>
+</body>
+</html>
