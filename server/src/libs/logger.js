@@ -1,5 +1,5 @@
 'use strict';
-const config = require('../common/get-config');
+const config = require('../config/get-config');
 const env = process.env.NODE_ENV || 'develop';
 
 const fs = require('fs'),

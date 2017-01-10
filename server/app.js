@@ -9,6 +9,11 @@ const server = restify.createServer({
 
 require('./src/libs/mongoose-connect');
 
+const morgan = require('morgan');  
+const passport = require('passport');  
+// Log requests to console
+server.use(morgan('dev')); 
+
 //middlewares
 //Note: bodyParser() takes care of turning your request data into a JavaScript object on the server automatically.
 server.use(restify.bodyParser());
@@ -29,6 +34,29 @@ server.use(restify.acceptParser(server.acceptable));
 //   next();
 // });
 
+
+// Initialize passport for use // Use the passport package in our application
+server.use(passport.initialize());  
+//And now we can import our JWT passport strategy. Enter this below our mongoose connection:
+
+// Enable CORS from client-side
+server.use(function(req, res, next) {  
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+
+
+
+
+// Bring in defined Passport Strategy
+require('./src/libs/passport')(passport);  
+require('./src/routes')(server);
+
+
 server.get(/\/assets\/.*(js|css|png|jpg)$/, restify.serveStatic({
   directory: './src/public'
 }));
@@ -38,10 +66,6 @@ server.get(/\/?.*/, restify.serveStatic({
   default: 'index.html'
 }));
 
-// server.get(/\/assets\/?.*/, restify.serveStatic({
-//   directory: './assets',
-//  // default: 'forum-0304390e.css'
-// }));
 
 
 /**
