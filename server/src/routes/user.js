@@ -12,6 +12,18 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
 
 
+const myProtected = coWrapper(function*(req, res, next){
+  let reqToken = req.headers.Authorization;
+  let userInfo = jwtHelper.setUserInfo(req.user);
+  let serverToken = `JWT ${jwtHelper.generateToken(userInfo)}`;
+  if(!(reqToken === serverToken) ){
+    console.log('token not matched or not existing!');
+    res.json(wrapResult({},-1,'token not matched or not existing!'));
+  }else{
+    console.log('the classified content is shown because of the matching token' );
+    res.json({content: 'the classified content is shown because of the matching token '});
+  }
+});
 /*
  * login controller 
  */
@@ -19,7 +31,7 @@ const login = coWrapper(function*(req, res, next){
   let user = yield User.findOne({'local.email': req.body.email}).exec();
   let userInfo = jwtHelper.setUserInfo(user);
 
-  res.send({
+  res.json({
     token: `JWT ${jwtHelper.generateToken(userInfo)}`,
     user: userInfo
   });
@@ -35,7 +47,7 @@ const register = coWrapper(function*(req, res, next){
     username = req.body.username;
 
   if(!email || !password || !username) {
-    res.send(wrapResult({},-1,'Please enter email, password or username!'));
+    res.json(wrapResult({},-1,'Please enter email, password or username!'));
   } else {
 
     User.findOne({'email': email}, function(err, existingUser){
@@ -57,15 +69,15 @@ const register = coWrapper(function*(req, res, next){
       newUser.save(function(err, user) {
         if (err) {
           console.log(`newUser.save error ${err.stack,err.message}`);
-          return res.send(wrapResult({},-1,'That email address already exists.'));
+          return res.json(wrapResult({},-1,'That email address already exists.'));
         }
 
        // Respond with JWT if user was created
         let userInfo = jwtHelper.setUserInfo(user);
-        res.send({
+        res.json(wrapResult({
           token: 'JWT ' + jwtHelper.generateToken(userInfo),
           user: userInfo
-        });
+        }));
 
         // res.json(wrapResult({},1,'Successfully created new user..'));
       });
@@ -124,8 +136,9 @@ const register = coWrapper(function*(req, res, next){
 
 
 module.exports   = function(server) {
-  server.post('/user/register', register);
-  server.post('/user/login', login);
+  server.post('/api/auth/register', register);
+  server.post('/api/auth/login', login);
+  server.get('/api/auth/protected', myProtected);
   //server.post('/user/authenticate', authenticate);
   //server.get('/user/dashboard', passport.authenticate('jwt', { session: false }), dashboard);
 };

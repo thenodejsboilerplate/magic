@@ -7,6 +7,26 @@ const server = restify.createServer({
 	//log:
 });
 
+// server.defaultResponseHeaders = function(data) {
+//   this.header('Access-Control-Allow-Origin', '*');
+//   this.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+//   this.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+//   this.header('Access-Control-Allow-Credentials', 'true'); 
+// };
+server.use(restify.jsonp());
+
+restify.defaultResponseHeaders = true; 
+
+
+//Enable CORS from client-side
+server.use(function(req, res, next) {  
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 require('./src/libs/mongoose-connect');
 
 const morgan = require('morgan');  
@@ -38,18 +58,6 @@ server.use(restify.acceptParser(server.acceptable));
 // Initialize passport for use // Use the passport package in our application
 server.use(passport.initialize());  
 //And now we can import our JWT passport strategy. Enter this below our mongoose connection:
-
-// Enable CORS from client-side
-server.use(function(req, res, next) {  
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-
-
-
 
 
 // Bring in defined Passport Strategy
